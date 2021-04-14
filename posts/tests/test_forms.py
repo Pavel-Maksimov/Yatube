@@ -8,6 +8,7 @@ from django.test import Client, TestCase, override_settings
 from django.urls import reverse
 
 from posts.models import Comment, Group, Post
+
 from . import constants as const
 
 User = get_user_model()
@@ -124,7 +125,7 @@ class CommentCreateTests(TestCase):
         form_data = {
             "text": "Текст нового поста"
         }
-        add_comment_url = reverse("add_comment", 
+        add_comment_url = reverse("add_comment",
                                   args=(const.AUTHOR_USERNAME,
                                         CommentCreateTests.test_post.id,))
         self.guest_client.post(add_comment_url,

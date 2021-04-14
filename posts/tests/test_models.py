@@ -2,6 +2,7 @@ from django.contrib.auth import get_user_model
 from django.test import TestCase
 
 from posts.models import Group, Post
+
 from . import constants as const
 
 User = get_user_model()

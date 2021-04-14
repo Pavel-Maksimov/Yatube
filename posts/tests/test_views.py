@@ -1,8 +1,8 @@
 import shutil
 import tempfile
 
-from django.conf import settings
 from django import forms
+from django.conf import settings
 from django.contrib.auth import get_user_model
 from django.core.cache import cache
 from django.core.files.uploadedfile import SimpleUploadedFile
@@ -10,6 +10,7 @@ from django.test import Client, TestCase, override_settings
 from django.urls import reverse
 
 from posts.models import Follow, Group, Post
+
 from . import constants as const
 
 User = get_user_model()
@@ -205,7 +206,7 @@ class ErrorCodesReturn(TestCase):
         self.assertTemplateUsed(response, "misc/404.html")
 
 
-class Cache_Use_Tests(TestCase):
+class CacheUseTests(TestCase):
     @classmethod
     def setUpClass(cls):
         super().setUpClass()

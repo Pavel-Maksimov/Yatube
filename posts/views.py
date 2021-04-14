@@ -4,10 +4,11 @@ from django.core.paginator import Paginator
 from django.shortcuts import get_object_or_404, redirect, render
 from django.urls import reverse
 
+from yatube.settings import PAGINATOR_NUMBER
+
 from .decorators import check_user_is_author
 from .forms import CommentForm, PostForm
 from .models import Comment, Follow, Group, Post
-from yatube.settings import PAGINATOR_NUMBER
 
 User = get_user_model()
 
@@ -127,7 +128,7 @@ def follow_index(request):
 def profile_follow(request, username):
     author = User.objects.get(username=username)
     follow_exists = Follow.objects.filter(author=author,
-                                      user=request.user).exists()
+                                          user=request.user).exists()
     if request.user != author and not follow_exists:
         follow = Follow.objects.create(author=author, user=request.user)
         follow.save()

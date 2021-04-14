@@ -3,6 +3,7 @@ from django.test import Client, TestCase
 from django.urls import reverse
 
 from posts.models import Group, Post
+
 from . import constants as const
 
 User = get_user_model()
