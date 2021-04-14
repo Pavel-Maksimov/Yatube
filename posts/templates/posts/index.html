@@ -10,7 +10,7 @@
 
     <div class="row">
         <div class="col-md-10">  
-            {% cache 20 index_page %} 
+            {% cache 20 index_page page.number %} 
             
             {% for post in page %}
                 {% include 'post_item.html' with post=post %}
