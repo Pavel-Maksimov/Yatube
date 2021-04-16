@@ -62,14 +62,17 @@ def profile(request, username):
 
 def post_view(request, username, post_id):
     author = User.objects.get(username__iexact=username)
-    post = Post.objects.get(author=author, id=post_id)
+    post = get_object_or_404(Post, author=author, id=post_id)
     comment_form = CommentForm()
-    comments = Comment.objects.filter(post=post)
+    following = False
+    if request.user.is_authenticated:
+        following = Follow.objects.filter(
+            author=author, user=request.user).exists()
     context = {
         "author": author,
         "post": post,
         "comment_form": comment_form,
-        "comments": comments
+        "following": following
     }
     return render(request, "post.html", context)
 

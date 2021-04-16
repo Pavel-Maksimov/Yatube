@@ -10,6 +10,6 @@
             {% include 'post_item.html' with post=post %}
         </div>
     </div>
-    {% include 'comments.html' with comments=comments comment_form=comment_form post=post %}
+    {% include 'comments.html' with comments=post.comments.all comment_form=comment_form post=post %}
 </main>
 {% endblock %}

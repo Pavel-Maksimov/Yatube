@@ -1,7 +1,10 @@
+from django.contrib.auth import get_user_model
 from django.shortcuts import redirect
 from django.urls import reverse
 
-from .models import Post
+from .models import Post, User
+
+User = get_user_model()
 
 
 def check_user_is_author(func):

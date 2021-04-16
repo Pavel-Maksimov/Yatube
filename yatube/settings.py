@@ -11,13 +11,13 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = '$1z%i^r0r@vi98f9lzjgwuy7h@2)7xs0k%%@u0e1an+1nh4xq='
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = [
-    "localhost",
-    "127.0.0.1",
-    "[::1]",
-    "testserver",
+    'localhost',
+    '127.0.0.1',
+    '[::1]',
+    'testserver',
 ]
 
 
@@ -121,16 +121,15 @@ USE_TZ = True
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
-MEDIA_URL = "/media/"
-MEDIA_ROOT = os.path.join(BASE_DIR, "media")
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
-LOGIN_URL = "/auth/login/"
-LOGIN_REDIRECT_URL = "index"
-# LOGOUT_REDIRECT_URL = "index"
+LOGIN_URL = '/auth/login/'
+LOGIN_REDIRECT_URL = 'index'
 
-EMAIL_BACKEND = "django.core.mail.backends.filebased.EmailBackend"
+EMAIL_BACKEND = 'django.core.mail.backends.filebased.EmailBackend'
 
-EMAIL_FILE_PATH = os.path.join(BASE_DIR, "sent_emails")
+EMAIL_FILE_PATH = os.path.join(BASE_DIR, 'sent_emails')
 
 PAGINATOR_NUMBER = 10
 

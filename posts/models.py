@@ -31,7 +31,9 @@ class Post(models.Model):
                                          " будет опубликован пост"),
                               blank=True,
                               null=True)
-    image = models.ImageField(upload_to="posts/", blank=True, null=True)
+    image = models.ImageField(upload_to="posts/", blank=True, null=True,
+                              help_text="Загрузите картинку к посту",
+                              verbose_name="Изображение",)
 
     class Meta:
         ordering = ("-pub_date",)
@@ -54,7 +56,8 @@ class Comment(models.Model):
         ordering = ("-created",)
 
     def __str__(self):
-        return self.text[:15]
+        return (f"Коментарий {self.author} к посту"
+                f"{self.post.id} от {self.created}")
 
 
 class Follow(models.Model):
@@ -62,3 +65,9 @@ class Follow(models.Model):
                              related_name="follower")
     author = models.ForeignKey(User, on_delete=models.CASCADE,
                                related_name="following")
+
+    class Meta:
+        ordering = ("user",)
+
+    def __str__(self):
+        return f"Пописка позоателя {self.user} на автора {self.author}"
