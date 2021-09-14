@@ -149,5 +149,5 @@ dmypy.json
 static/
 posts/static/
 media/
-sent_emails
+sent_emails/
 
