@@ -14,19 +14,19 @@ git clone https://github.com/Pavel-Maksimov/Yatube.git
 Перейдите в папку с проектом и создайте и активируйте виртуальное окружение. <br>
 Для Windows:
 ```
-> python3 -m venv venv
-> source venv/Scripts/activate
+python3 -m venv venv
+source venv/Scripts/activate
 ```
 Для Linux:
 ```
-$ python -m venv venv
-$ source venv/bin/activate 
+python -m venv venv
+source venv/bin/activate 
 ```
 Установите все необходимые зависимости:
 ```
-pip install -r requirements.txt
+(venv)$pip install -r requirements.txt
 ```
 Для запуска сервера выполните команду:
 ```
-python manage.py runserver
+(venv)$python manage.py runserver
 ```
