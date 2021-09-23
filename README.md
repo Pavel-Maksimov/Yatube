@@ -33,4 +33,4 @@ source venv/bin/activate
 ```
 (venv)$python manage.py runserver
 ```
-Для остановки сервера используйте сочетание клавиш **Ctrl+C**
+Для остановки сервера используйте сочетание клавиш **Ctrl+C**.
