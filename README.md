@@ -6,7 +6,27 @@ Yatube - это социальная сеть для публикации пос
 Стек технологий: Python3, Django 2.2, SQLite3, Git, Pytest, Unittest.
 <br><br>
 При разработке проекта применялся Python 3.8.<br>
+sudo apt-get install python3.7
 Для развёртывания проекта выполните следующие действия:<br>
 ```
 git clone https://github.com/Pavel-Maksimov/Yatube.git
+```
+Перейдите в папку с проектом и создайте и активируйте виртуальное окружение. <br>
+Для Windows:
+```
+> python3 -m venv venv
+> source venv/Scripts/activate
+```
+Для Linux:
+```
+$ python -m venv venv
+$ source venv/bin/activate 
+```
+Установите все необходимые зависимости:
+```
+pip install -r requirements.txt
+```
+Для запуска сервера выполните команду:
+```
+python manage.py runserver
 ```
