@@ -5,11 +5,13 @@ Yatube - это социальная сеть для публикации пос
 <br><br>
 Стек технологий: Python3, Django 2.2, SQLite3, Git, Pytest, Unittest.
 <br><br>
+### Версия языка <br>
 При разработке проекта применялся Python 3.8.<br>
 Для установки Python выполните команду:
 ```
 sudo apt-get install python3.8
 ```
+### Развёртывание проекта <br>
 Для развёртывания проекта выполните следующие действия:<br>
 ```
 git clone https://github.com/Pavel-Maksimov/Yatube.git
