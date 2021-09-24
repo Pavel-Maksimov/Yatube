@@ -36,6 +36,10 @@ source venv/bin/activate
 ```
 (venv)$pip install -r requirements.txt
 ```
+Примените миграции:
+```
+python manage.py migrate
+```
 Для запуска сервера выполните команду:
 ```
 (venv)$python manage.py runserver
