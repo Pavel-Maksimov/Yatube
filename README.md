@@ -16,6 +16,11 @@ sudo apt-get install python3.8
 ```
 git clone https://github.com/Pavel-Maksimov/Yatube.git
 ```
+Установите виртуальное окружение:
+```
+sudo apt install python3.8-venv
+```
+
 Перейдите в папку с проектом и создайте и активируйте виртуальное окружение. <br>
 Для Windows:
 ```
