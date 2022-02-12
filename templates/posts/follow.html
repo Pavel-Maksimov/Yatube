@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% block title %} Моя лента {% endblock %}
+
+{% block header %} Моя лента {% endblock %}
+
+{% block content %}
+  {% load thumbnail %} 
+  {% include 'menu.html' with follow=True %}
+  <div class="row">
+    <div class="col-md-2">
+    </div>
+    <div class="col-md-10">     
+      {% for post in page %}
+        {% include 'post_item.html' with post=post %}
+      {% endfor %}  
+      
+      {% include 'paginator.html' %}
+    </div>   
+  </div>
+{% endblock %}

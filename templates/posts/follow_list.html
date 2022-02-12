@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+
+{% block title %} Мои подписки {% endblock %}
+
+{% block header %} Мои подписки {% endblock %}
+
+{% block content %}
+<div class="row">
+    <div class="col-md-2">
+    </div>
+    <div class="col-md-10">
+      <ul class="list-group list-group-flush">   
+        {% for user in page %}
+        <li class="list-group-item">{% include 'user_item.html' with user=user %}</li>
+        {% endfor %}  
+        
+        {% include 'paginator.html' %}
+      </ul>
+{% endblock %}

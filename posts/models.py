@@ -12,6 +12,10 @@ class Group(models.Model):
     description = models.TextField(verbose_name="Описание",
                                    help_text="Опишите группу")
 
+    class Meta:
+        verbose_name = "Группа"
+        verbose_name_plural = "Группы"
+
     def __str__(self):
         return self.title
 
@@ -37,6 +41,8 @@ class Post(models.Model):
 
     class Meta:
         ordering = ("-pub_date",)
+        verbose_name = "Пост"
+        verbose_name_plural = "Посты"
 
     def __str__(self):
         return self.text[:15]
@@ -54,6 +60,8 @@ class Comment(models.Model):
 
     class Meta:
         ordering = ("-created",)
+        verbose_name = "Комментарий"
+        verbose_name_plural = "Комментарии"
 
     def __str__(self):
         return (f"Коментарий {self.author} к посту"
@@ -68,6 +76,8 @@ class Follow(models.Model):
 
     class Meta:
         ordering = ("user",)
+        verbose_name = "Подписка"
+        verbose_name_plural = "Подписки"
 
     def __str__(self):
         return f"Пописка позоателя {self.user} на автора {self.author}"

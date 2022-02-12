@@ -1,28 +1,58 @@
 <!doctype html>
 <html>
+{% load static %}
 
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>{% block title %}The Last Social Media You'll Ever Need{% endblock %} | Yatube</title>
-    <!-- Загрузка статики -->
-    {% load static %}
-    <link rel="stylesheet" href="{% static 'bootstrap/dist/css/bootstrap.min.css' %}">
-    <script src="{% static 'jquery/dist/jquery.min.js' %}"></script>
-    <script src="{% static 'bootstrap/dist/js/bootstrap.min.js' %}"></script>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>{% block title %} <!-- title --> {% endblock %} | Yatube</title>
+  <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+  <script src="{% static 'jquery/dist/jquery.min.js' %}"></script>
+  <script src="{% static 'bootstrap/dist/js/bootstrap.min.js' %}"></script>
+  <link rel="icon" href="img/fav/fav.ico" type="image">
+  <link rel="apple-touch-icon" sizes="180x180" href="{% static 'img/fav/apple-touch-icon.png' %}">
+  <link rel="icon" type="image/png" sizes="32x32" href="{% static 'img/fav/favicon-32x32.png' %}">
+  <link rel="icon" type="image/png" sizes="16x16" href="{% static 'img/fav/favicon-16x16.png' %}">
+  <meta name="msapplication-TileColor" content="#000">
+  <meta name="theme-color" content="#ffffff">
 </head>
 
 <body>
+
+  <header>
     {% include 'nav.html' %}
-    <main>
-        <div class="container">
-            <h1>{% block header %}The Last Social Media You'll Ever Need{% endblock %}</h1>
-            {% block content %}
-                <!-- Содержимое страницы -->
-            {% endblock %}
+    <div class="container">
+      <div class="row">
+        <div class="col-md-3">
         </div>
-    </main>
+        <div class="col-md-9">
+          <h1>{% block header %} The Last Social Media You'll Ever Need {% endblock %}</h1>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <div class="row">
+      <div class="col-md-2">
+          {% include 'side_bar.html' %}
+      </div>
+      <div class="col-md-1">
+      </div>
+         <div class="col-md-6">
+           {% block content %}
+              <!-- Содержимое страницы -->
+           {% endblock %}
+        </div>
+        <div class="col-md-3">
+         </div>
+      </div>
+  </main>
+
+  <footer>
     {% include 'footer.html' %}
+  </footer>
+  
 </body>
 
 </html>

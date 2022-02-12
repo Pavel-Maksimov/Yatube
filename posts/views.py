@@ -19,7 +19,8 @@ def index(request):
     paginator = Paginator(post_list, PAGINATOR_NUMBER)
     page_number = request.GET.get("page")
     page = paginator.get_page(page_number)
-    return render(request, "index.html", {"page": page})
+    context = {"page": page, "path": "home"}
+    return render(request, "index.html", context)
 
 
 def group_posts(request, slug):
@@ -57,6 +58,8 @@ def profile(request, username):
         following = Follow.objects.filter(
             author=author, user=request.user).exists()
     context = {"author": author, "page": page, "following": following}
+    if request.user == author:
+        context["my_profile"] = True
     return render(request, "profile.html", context)
 
 
@@ -144,3 +147,14 @@ def profile_unfollow(request, username):
     follow = Follow.objects.get(author=author, user=request.user)
     follow.delete()
     return redirect(reverse("profile", args=(username,)))
+
+
+@login_required
+def my_follows(request):
+    follows = Follow.objects.filter(user=request.user)
+    users = User.objects.filter(following__in=follows)
+    print('users:', users)
+    paginator = Paginator(users, PAGINATOR_NUMBER)
+    page_number = request.GET.get("page")
+    page = paginator.get_page(page_number)
+    return render(request, "follow_list.html", {"page": page})
