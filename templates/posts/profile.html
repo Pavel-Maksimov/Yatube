@@ -5,16 +5,16 @@
 {% block header %} Профиль пользователя {% endblock %}
 
 {% block content %}
-    <div class="row">
-      {% include 'author_card.html' with author=author following=following %}
-      <div class="col-md-9">     
-        {% load thumbnail %}  
-                 
-        {% for post in page %}
-            {% include 'post_item.html' with post=post %}
-        {% endfor %}
-  
-        {% include 'paginator.html' %}
-      </div>
+  <div class="row">
+    {% include 'author_card.html' with author=author following=following %}
+    <div class="col-md-9">     
+      {% load thumbnail %}  
+               
+      {% for post in page %}
+        {% include 'post_item.html' with post=post %}
+      {% endfor %}
+
+      {% include 'paginator.html' %}
     </div>
+  </div>
 {% endblock %}

@@ -59,7 +59,7 @@ def profile(request, username):
             author=author, user=request.user).exists()
     context = {"author": author, "page": page, "following": following}
     if request.user == author:
-        context["my_profile"] = True
+        context["path"] = "my_profile"
     return render(request, "profile.html", context)
 
 
@@ -157,4 +157,5 @@ def my_follows(request):
     paginator = Paginator(users, PAGINATOR_NUMBER)
     page_number = request.GET.get("page")
     page = paginator.get_page(page_number)
-    return render(request, "follow_list.html", {"page": page})
+    context = {"page": page, "path": "my_follows"}
+    return render(request, "follow_list.html", context)
