@@ -6,23 +6,27 @@
   <div class="list-group" id="myList" role="tablist">
 
     {% if path == 'home' %}
-      <a class="list-group-item list-group-item-action active" data-bs-toggle="list" href="{% url 'index' %}" role="tab">Главная</a>
+      <a class="list-group-item list-group-item-action active" data-bs-toggle="list" href="{% url 'posts:index' %}" role="tab">Главная</a>
     {% else %}
-      <a class="list-group-item list-group-item-action" data-bs-toggle="list" href="{% url 'index' %}" role="tab">Главная</a>
+      <a class="list-group-item list-group-item-action" data-bs-toggle="list" href="{% url 'posts:index' %}" role="tab">Главная</a>
       {% endif %}
 
     <a class="list-group-item list-group-item-action disabled" data-bs-toggle="list" href="#home" role="tab">Группы</a>
 
-    <a class="list-group-item list-group-item-action" data-bs-toggle="list" href="{% url 'my_follows' %}" role="tab">Мои подписки</a>
+    {% if path == 'my_follows' %}
+      <a class="list-group-item list-group-item-action active" data-bs-toggle="list" href="{% url 'posts:my_follows' %}" role="tab">Мои подписки</a>
+    {% else %}
+      <a class="list-group-item list-group-item-action" data-bs-toggle="list" href="{% url 'posts:my_follows' %}" role="tab">Мои подписки</a>
+    {% endif %}
 
     {% if user.is_authenticated %}
-      {% if my_profile %}
-        <a class="list-group-item list-group-item-action active" data-bs-toggle="list" href="{% url 'profile' user.username %}" role="tab">Мой профиль</a>
+      {% if path == 'my_profile' %}
+        <a class="list-group-item list-group-item-action active" data-bs-toggle="list" href="{% url 'posts:profile' user.username %}" role="tab">Мой профиль</a>
       {% else %}
-        <a class="list-group-item list-group-item-action" data-bs-toggle="list" href="{% url 'profile' user.username %}" role="tab">Мой профиль</a>
+        <a class="list-group-item list-group-item-action" data-bs-toggle="list" href="{% url 'posts:profile' user.username %}" role="tab">Мой профиль</a>
       {% endif %}
     {% else %}
-      <a class="list-group-item list-group-item-action disabled" data-bs-toggle="list" href="{% url 'index' %}" role="tab">Мой профиль</a>
+      <a class="list-group-item list-group-item-action disabled" data-bs-toggle="list" href="{% url 'posts:index' %}" role="tab">Мой профиль</a>
     {% endif %}
 
     <a class="list-group-item list-group-item-action disabled" data-bs-toggle="list" href="#messages" role="tab">Сообщения</a>

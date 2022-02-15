@@ -42,7 +42,7 @@ def new_post(request):
         image = form.cleaned_data["image"]
         post = Post(text=text, group=group, author=request.user, image=image)
         post.save()
-        return redirect(reverse("index"))
+        return redirect(reverse("posts:index"))
     return render(request, "new_post.html", {"form": form})
 
 
@@ -59,7 +59,7 @@ def profile(request, username):
             author=author, user=request.user).exists()
     context = {"author": author, "page": page, "following": following}
     if request.user == author:
-        context["my_profile"] = True
+        context["path"] = "my_profile"
     return render(request, "profile.html", context)
 
 
@@ -90,7 +90,7 @@ def post_edit(request, username, post_id):
         if form.is_valid():
             form.save()
             return redirect(reverse(
-                "post",
+                "posts:post",
                 kwargs={"username": username, "post_id": post.id}
             ))
     form = PostForm(instance=post)
@@ -114,7 +114,7 @@ def add_comment(request, username, post_id):
         author = request.user
         comment = Comment(text=text, post=post, author=author)
         comment.save()
-    return redirect(reverse("post", args=(username, post_id)))
+    return redirect(reverse("posts:post", args=(username, post_id)))
 
 
 @login_required
@@ -138,7 +138,7 @@ def profile_follow(request, username):
     if request.user != author and not follow_exists:
         follow = Follow.objects.create(author=author, user=request.user)
         follow.save()
-    return redirect(reverse("profile", args=(username,)))
+    return redirect(reverse("posts:profile", args=(username,)))
 
 
 @login_required
@@ -146,7 +146,7 @@ def profile_unfollow(request, username):
     author = User.objects.get(username=username)
     follow = Follow.objects.get(author=author, user=request.user)
     follow.delete()
-    return redirect(reverse("profile", args=(username,)))
+    return redirect(reverse("posts:profile", args=(username,)))
 
 
 @login_required
@@ -157,4 +157,5 @@ def my_follows(request):
     paginator = Paginator(users, PAGINATOR_NUMBER)
     page_number = request.GET.get("page")
     page = paginator.get_page(page_number)
-    return render(request, "follow_list.html", {"page": page})
+    context = {"page": page, "path": "my_follows"}
+    return render(request, "follow_list.html", context)

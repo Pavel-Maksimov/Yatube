@@ -6,10 +6,10 @@ from django.urls import include, path
 
 urlpatterns = [
     path("about/", include("about.urls", namespace="about")),
-    path("auth/", include("users.urls")),
+    path("auth/", include("users.urls", namespace='users')),
     path("auth/", include("django.contrib.auth.urls")),
     path("admin/", admin.site.urls),
-    path("", include("posts.urls")),
+    path("", include("posts.urls", namespace='posts')),
 ]
 
 handler404 = "posts.views.page_not_found"  # noqa
