@@ -25,12 +25,12 @@ class PostURLTests(TestCase):
             author=PostURLTests.author,
             group=PostURLTests.test_group
         )
-        cls.POST_URL = reverse("post", kwargs={
+        cls.POST_URL = reverse("posts:post", kwargs={
             "username": const.USERNAME,
             "post_id": PostURLTests.test_post.id
         }
         )
-        cls.POST_EDIT_URL = reverse("post_edit", kwargs={
+        cls.POST_EDIT_URL = reverse("posts:post_edit", kwargs={
             "username": const.USERNAME,
             "post_id": PostURLTests.test_post.id
         }

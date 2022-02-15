@@ -31,12 +31,12 @@ class PostCreateFormTests(TestCase):
             author=PostCreateFormTests.test_user,
             group=PostCreateFormTests.test_group
         )
-        cls.POST_URL = reverse("post", kwargs={
+        cls.POST_URL = reverse("posts:post", kwargs={
             "username": const.USERNAME,
             "post_id": PostCreateFormTests.test_post.id
         }
         )
-        cls.POST_EDIT_URL = reverse("post_edit", kwargs={
+        cls.POST_EDIT_URL = reverse("posts:post_edit", kwargs={
             "username": const.USERNAME,
             "post_id": PostCreateFormTests.test_post.id
         }
@@ -106,7 +106,7 @@ class CommentCreateTests(TestCase):
             author=CommentCreateTests.author,
             group=CommentCreateTests.test_group
         )
-        cls.POST_URL = reverse("post", args=(
+        cls.POST_URL = reverse("posts:post", args=(
             const.AUTHOR_USERNAME,
             CommentCreateTests.test_post.id,
         )
@@ -125,7 +125,7 @@ class CommentCreateTests(TestCase):
         form_data = {
             "text": "Текст нового поста"
         }
-        add_comment_url = reverse("add_comment",
+        add_comment_url = reverse("posts:add_comment",
                                   args=(const.AUTHOR_USERNAME,
                                         CommentCreateTests.test_post.id,))
         self.guest_client.post(add_comment_url,

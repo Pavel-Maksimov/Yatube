@@ -35,13 +35,13 @@ SMALL_GIF = (
     b'\x0A\x00\x3B'
 )
 
-HOME_URL = reverse("index")
-NEW_POST_URL = reverse("new_post")
-GROUP_URL = reverse("group_posts", kwargs={"slug": GROUP_SLUG})
-STRANGE_GROUP_URL = reverse("group_posts",
+HOME_URL = reverse("posts:index")
+NEW_POST_URL = reverse("posts:new_post")
+GROUP_URL = reverse("posts:group_posts", kwargs={"slug": GROUP_SLUG})
+STRANGE_GROUP_URL = reverse("posts:group_posts",
                             kwargs={"slug": STRANGE_GROUP_SLUG})
-PROFILE_URL = reverse("profile", kwargs={"username": USERNAME})
-LOGIN_URL = reverse("login")
-FOLLOW_URL = reverse("profile_follow", args=(AUTHOR_USERNAME,))
-UNFOLLOW_URL = reverse("profile_unfollow", args=(AUTHOR_USERNAME,))
-FOLLOW_INDEX_URL = reverse("follow_index")
+PROFILE_URL = reverse("posts:profile", kwargs={"username": USERNAME})
+LOGIN_URL = reverse("users:login")
+FOLLOW_URL = reverse("posts:profile_follow", args=(AUTHOR_USERNAME,))
+UNFOLLOW_URL = reverse("posts:profile_unfollow", args=(AUTHOR_USERNAME,))
+FOLLOW_INDEX_URL = reverse("posts:follow_index")

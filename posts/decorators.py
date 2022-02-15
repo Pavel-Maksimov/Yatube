@@ -14,7 +14,7 @@ def check_user_is_author(func):
         post = Post.objects.get(id=post_id)
         if request.user == post.author:
             return func(request, username, post_id, *args, **kwargs)
-        return redirect(reverse("post",
+        return redirect(reverse("posts:post",
                                 kwargs={"username": username,
                                         "post_id": post.id
                                         }

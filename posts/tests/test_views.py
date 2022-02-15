@@ -47,12 +47,12 @@ class PostPagesTests(TestCase):
             slug=const.STRANGE_GROUP_SLUG,
             description=const.STRANGE_GROUP_DESCRIPTION
         )
-        cls.POST_URL = reverse("post", kwargs={
+        cls.POST_URL = reverse("posts:post", kwargs={
             "username": const.USERNAME,
             "post_id": PostPagesTests.test_post.id
         }
         )
-        cls.POST_EDIT_URL = reverse("post_edit", kwargs={
+        cls.POST_EDIT_URL = reverse("posts:post_edit", kwargs={
             "username": const.USERNAME,
             "post_id": PostPagesTests.test_post.id
         }
@@ -70,7 +70,7 @@ class PostPagesTests(TestCase):
     def test_home_page_shows_correct_context(self):
         """Шаблон домашней страницы сформирован
         с правильным контекстом"""
-        response = self.authorized_client.get(reverse("index"))
+        response = self.authorized_client.get(reverse("posts:index"))
         first_post = response.context["page"][0]
         self.assertEqual(first_post.text, const.POST_TEXT)
         self.assertEqual(first_post.author, PostPagesTests.test_user)
